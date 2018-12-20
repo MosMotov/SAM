@@ -1,0 +1,36 @@
+{% load static %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="{% static 'css/login.css' %}" rel="stylesheet">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<body style='background-color: #e7e7e7'>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <title>SAM Tech | MedicalRegister</title>
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="{% static 'img/SAM.png' %}" id="icon" alt="SAM Icon" height="100" />
+      <h3>Medical Personnel Register</h3>
+    </div>
+
+    <!-- Login Form -->
+    <form method="post">
+      {% csrf_token %}
+      <input type="text" id="username" class="fadeIn second" name="username" placeholder="Username">
+      <input type="password" id="password1" class="fadeIn second" name="password1" placeholder="Password">
+      <input type="password" id="password2" class="fadeIn second" name="password2" placeholder="Confirm Password">
+      <input type="text" id="first_name" class="fadeIn second" name="first_name" placeholder="Firstname">
+      <input type="text" id="last_name" class="fadeIn second" name="last_name" placeholder="Lastname">
+      <input type="text" id="gender" class="fadeIn second" name="gender" placeholder="Gender">
+      <input type="number" id="age" class="fadeIn second" name="age" placeholder="Age" min=0>
+      <input type="submit" class="fadeIn fifth" value="Confirm">
+    </form>
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="{% url 'index' %}">Go to the Site</a>
+    </div>
+  </div>
+</div>
+</body>

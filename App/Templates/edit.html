@@ -1,0 +1,38 @@
+{% load static %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="{% static 'css/login.css' %}" rel="stylesheet">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<body style='background-color: #e7e7e7'>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <title>SAM Tech | Edit {{ username }}'s Data</title>
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="{% static 'img/SAM.png' %}" id="icon" alt="SAM Icon" height="100" />
+      <h3>Edit {{ username }}'s Data</h3>
+    </div>
+
+    <!-- Login Form -->
+    <form method="post">
+      {% csrf_token %}
+      <input type="number" id="cpt" class="fadeIn second" name="cpt" placeholder="Chest Pain Type" min=0>
+      <input type="number" id="sc" class="fadeIn second" name="sc" placeholder="Serum Cholestoral" min=0>
+      <input type="number" id="fbs" class="fadeIn second" name="fbs" placeholder="Fasting Blood Sugar" min=0>
+      <input type="number" id="rer" class="fadeIn second" name="rer" placeholder="Resting Electrocardiographic" min=0>
+      <input type="number" id="eia" class="fadeIn second" name="eia" placeholder="Exercise Induced Angina" min=0>
+      <input type="number" id="oldpeak" class="fadeIn second" name="oldpeak" placeholder="Oldpeak" min=0>
+      <input type="number" id="sotp" class="fadeIn second" name="sotp" placeholder="The Slope of the Peak Exercise" min=0>
+      <input type="number" id="nomv" class="fadeIn second" name="nomv" placeholder="Number of Major Vessels" min=0>
+      <input type="number" id="thal" class="fadeIn second" name="thal" placeholder="Thal" min=0>
+      <input type="submit" class="fadeIn fifth" value="Confirm">
+    </form>
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="http://127.0.0.1:8000/ProfileView/{{ username }}">Back</a>
+    </div>
+  </div>
+</div>
+</body>

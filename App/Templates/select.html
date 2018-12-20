@@ -1,0 +1,197 @@
+{% load static %}
+<script>
+
+        var create= "{{create}}";
+        var f1= "{{f1}}";
+        var f2= "{{f2}}";
+        var f3= "{{f3}}";
+        var f4= "{{f4}}";
+        var f5= "{{f5}}";
+        var risk = "{{risk}}";
+        var safe = "{{safe}}";
+        var ran = "{{ran}}";
+        </script>
+    <!DOCTYPE html>
+    <html lang="en">
+    <title>SAM Tech | {{ username }}</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!--
+
+        Template 2108 Dashboard
+
+      http://www.tooplate.com/view/2108-dashboard
+
+        -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
+        <!-- https://fonts.google.com/specimen/Open+Sans -->
+        <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
+        <!-- https://fontawesome.com/ -->
+        <link rel="stylesheet" href="{% static 'css/fullcalendar.min.css' %}">
+        <!-- https://fullcalendar.io/ -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <!-- https://getbootstrap.com/ -->
+        <link rel="stylesheet" href="{% static 'css/tooplate.css' %}">
+    </head>
+
+    <body id="reportsPage">
+        <div class="" id="home">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="navbar navbar-expand-xl navbar-light bg-light">
+                            <a class="navbar-brand" href="{% url 'index' %}">
+                                <img src="{% static 'img/SAMW.png' %}" id="icon" alt="SAM Icon" height="100" />
+                            </a>
+                            <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav mx-auto">
+                                    <li class="nav-item">
+                                        <h1>{{ username }}'s Profile</h1>
+                                    </li>
+                                </ul>
+                                <ul class="navbar-nav">
+										<li class="nav-item">
+												<a class="nav-link d-flex" href="http://127.0.0.1:8000/Edit/{{ username }}">
+													<i class="far fa-user mr-2 tm-logout-icon"></i>
+													<span>Edit Data</span>
+												</a>
+											</li>
+                                    <li class="nav-item">
+                                        <a class="nav-link d-flex" href="{% url 'logout' %}">
+                                            <i class="far fa-user mr-2 tm-logout-icon"></i>
+                                            <span>Logout</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <!-- row -->
+                <div class="row tm-content-row tm-mt-big">
+                    <div class="tm-col tm-col-big">
+                            <div class="bg-white tm-block h-100">
+                                {% if u.username == 'Choyai' %}
+                                <font size="6">{{ u.first_name }} {{ u.last_name }}</font><br><br>
+								Gender : <font color="red">{{ u.gender }}</font><br>
+								Age : <font color="red">{{ u.age }}</font> years<br>
+								Height : <font color="red">{{ f1 }}</font> cm<br>
+								Weight : <font color="red">{{ f2 }}</font> kg<br>
+								Chest Pain Type : <font color="red">{{ u.cpt }}</font><br>
+								Resting Blood Pressure : <font color="red">{{ f3 }}</font><br>
+								Serum Cholestoral : <font color="red">{{ u.sc }}</font> mg/dl<br>
+								Fasting Blood Sugar : <font color="red">{{ u.fbs }}</font> mg/dl<br>
+								Resting Electrocardiographic : <font color="red">{{ u.rer }}</font><br>
+								Maximum Heart Rate Achieved : <font color="red">{{ f4 }}</font><br>
+								Exercise Induced Angina : <font color="red">{{ u.eia }}</font><br>
+								Oldpeak : <font color="red">{{ u.oldpeak }}</font><br>
+								The Slope of the Peak Exercise : <font color="red">{{ u.sotp }}</font><br>
+								Number of Major Vessels : <font color="red">{{ u.nomv }}</font><br>
+                                Thal : <font color="red">{{ u.thal }}</font><br>
+                                {% else %}
+                                <font size="6">{{ user.first_name }} {{ user.last_name }}</font><br><br>
+								Gender : <font color="red">{{ user.gender }}</font><br>
+								Age : <font color="red">{{ user.age }}</font> years<br>
+								Height : <font color="red">170</font> cm<br>
+								Weight : <font color="red">75</font> kg<br>
+								Chest Pain Type : <font color="red">{{ user.cpt }}</font><br>
+								Resting Blood Pressure : <font color="red">0</font><br>
+								Serum Cholestoral : <font color="red">{{ user.sc }}</font> mg/dl<br>
+								Fasting Blood Sugar : <font color="red">{{ user.fbs }}</font> mg/dl<br>
+								Resting Electrocardiographic : <font color="red">{{ user.rer }}</font><br>
+								Maximum Heart Rate Achieved : <font color="red">40</font><br>
+								Exercise Induced Angina : <font color="red">{{ user.eia }}</font><br>
+								Oldpeak : <font color="red">{{ user.oldpeak }}</font><br>
+								The Slope of the Peak Exercise : <font color="red">{{ user.sotp }}</font><br>
+								Number of Major Vessels : <font color="red">{{ user.nomv }}</font><br>
+                                Thal : <font color="red">{{ user.thal }}</font><br>
+                                {% endif %}
+							</font></div>
+                    </div>
+                    <div class="tm-col tm-col-big">
+                        <div class="bg-white tm-block h-50">
+                            <h2 class="tm-block-title">Data</h2>
+                            <canvas id="barChart"></canvas>
+                        </div>
+                        <div class="bg-white tm-block h-50">
+                                <h2 class="tm-block-title">Data</h2>
+                                <canvas id="lineChart"></canvas>
+                            </div>
+                    </div>
+                    <div class="tm-col tm-col-small">
+                        <center><div class="bg-white tm-block h-50">
+                                <h2 class="tm-block-title">SAM Station</h2>
+                            <canvas id="pieChart" class="chartjs-render-monitor"></canvas>
+                            {% if u.risk %}
+                            <img src="{% static 'img/risk.png' %}" height="100">
+                            {% else %}
+                            <img src="{% static 'img/safe.png' %}" height="100">
+                            {% endif %}
+                        </div>
+                        <div class="bg-white tm-block h-50">
+                            <h2 class="tm-block-title">SAM Derma</h2>
+                            {% if ran %}
+                            <img src="{% static 'img/risk.png' %}" height="100">
+                            {% else %}
+                            <img src="{% static 'img/safe.png' %}" height="100">
+                            {% endif %}
+                        </div>
+                    </div>
+                        </div></center>
+                    </div>
+
+                </div>
+                <footer class="row tm-mt-small">
+
+                </footer>
+            </div>
+        </div>
+        <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+        <!-- https://jquery.com/download/ -->
+        <script src="{% static 'js/moment.min.js' %}"></script>
+        <!-- https://momentjs.com/ -->
+        <script src="{% static 'js/utils.js' %}"></script>
+        <script src="{% static 'js/Chart.min.js' %}"></script>
+        <!-- http://www.chartjs.org/docs/latest/ -->
+        <script src="{% static 'js/fullcalendar.min.js' %}"></script>
+        <!-- https://fullcalendar.io/ -->
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <!-- https://getbootstrap.com/ -->
+        <script src="{% static 'js/tooplate-scripts.js' %}"></script>
+        <script>
+            let ctxLine,
+                ctxBar,
+                ctxPie,
+                optionsLine,
+                optionsBar,
+                optionsPie,
+                configLine,
+                configBar,
+                configPie,
+                lineChart;
+            barChart, pieChart;
+            // DOM is ready
+            $(function () {
+                updateChartOptions();
+                drawLineChart(); // Line Chart
+                drawBarChart(); // Bar Chart
+                drawPieChart(); // Pie Chart
+                drawCalendar(); // Calendar
+
+                $(window).resize(function () {
+                    updateChartOptions();
+                    updateLineChart();
+                    updateBarChart();
+                    reloadPage();
+                });
+            })
+        </script>
+    </body>
+    </html>

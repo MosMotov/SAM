@@ -1,0 +1,30 @@
+{% load static %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="{% static 'css/login.css' %}" rel="stylesheet">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<body style='background-color: #e7e7e7'>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <title>SAM Tech | Alarm</title>
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="{% static 'img/SAM.png' %}" id="icon" alt="SAM Icon" height="100" />
+      <h3>Set Alarm</h3>
+    </div>
+
+    <!-- Login Form -->
+    <form method="post">
+      {% csrf_token %}
+      <input type="number" id="alarm" class="fadeIn second" name="alarm" placeholder="HHMM" min=0 max=2359>
+      <input type="submit" class="fadeIn fifth" value="Confirm">
+    </form>
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="{% url 'profile' %}">Back</a>
+    </div>
+  </div>
+</div>
+</body>
